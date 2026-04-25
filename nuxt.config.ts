@@ -8,6 +8,6 @@ export default defineNuxtConfig({
     '@bubblesortt/nuxt-es-toolkit',
     '@element-plus/nuxt',
     '@nuxtjs/google-fonts',
-    '@nuxtjs/tailwindcss'
-  ]
+    '@nuxtjs/tailwindcss',
+  ],
 })

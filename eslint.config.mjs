@@ -5,9 +5,12 @@ export default withNuxt({
   rules: {
     'vue/no-unused-vars': 'error',
     'no-console': 'warn',
-    'import/order': ['error', {
-      groups: ['builtin', 'external', 'internal', 'parent', 'sibling', 'index'],
-      'newlines-between': 'always',
-    }],
-  }
+    'import/order': [
+      'error',
+      {
+        groups: ['builtin', 'external', 'internal', 'parent', 'sibling', 'index'],
+        'newlines-between': 'always',
+      },
+    ],
+  },
 })

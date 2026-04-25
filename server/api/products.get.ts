@@ -1,20 +1,19 @@
-import { readFileSync } from 'fs';
-import { resolve } from 'path';
+import { readFileSync } from 'fs'
+import { resolve } from 'path'
 
- import Papa from 'papaparse';
+import Papa from 'papaparse'
 
-import type { Product } from "~/types/product"
+import type { Product } from '~/types/product'
 
+export default defineEventHandler((): Product[] => {
+  const filePath = resolve('public/products.csv')
+  const file = readFileSync(filePath, 'utf-8')
 
- export default defineEventHandler((): Product[] => {
-    const filePath = resolve('public/products.csv');
-    const file = readFileSync(filePath, 'utf-8');
+  const { data } = Papa.parse(file, {
+    header: true,
+    skipEmptyLines: true,
+    dynamicTyping: true,
+  })
 
-    const {data} = Papa.parse(file, {
-        header: true,
-        skipEmptyLines: true,
-        dynamicTyping: true
-    })
-
-    return data as Product[];
- })
+  return data as Product[]
+})
