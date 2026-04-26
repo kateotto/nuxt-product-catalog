@@ -14,7 +14,7 @@ export default defineNuxtConfig({
     serverAssets: [
       {
         baseName: 'data',
-        dir: './server/assets',
+        dir: './server/assets/data',
       },
     ],
   },

@@ -3,15 +3,16 @@ import { resolve } from 'path'
 import Papa from 'papaparse'
 import type { Product } from '~/types/product'
 
-export default defineEventHandler((): Product[] => {
-  const filePath = resolve(process.cwd(), 'server/assets/data/products.csv')
-  console.log('filePath:', filePath)
-  console.log('cwd:', process.cwd())
-  
-  const file = readFileSync(filePath, 'utf-8')
-  console.log('file:', file.slice(0, 100))
+export default defineEventHandler(async (): Promise<Product[]> => {
+  let csv: string
 
-  const { data } = Papa.parse(file, {
+  if (process.dev) {
+    csv = readFileSync(resolve(process.cwd(), 'server/assets/data/products.csv'), 'utf-8')
+  } else {
+    csv = await useStorage('assets/data').getItem('products.csv') as string
+  }
+
+  const { data } = Papa.parse(csv, {
     header: true,
     skipEmptyLines: true,
     dynamicTyping: true,
