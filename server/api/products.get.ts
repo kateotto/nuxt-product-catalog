@@ -1,18 +1,11 @@
-import { readFileSync } from 'fs'
-import { resolve } from 'path'
 import Papa from 'papaparse'
+
 import type { Product } from '~/types/product'
 
-export default defineEventHandler(async (): Promise<Product[]> => {
-  let csv: string
+export default defineEventHandler((): Product[] => {
+  const { productsCsv } = useRuntimeConfig()
 
-  if (process.dev) {
-    csv = readFileSync(resolve(process.cwd(), 'server/assets/data/products.csv'), 'utf-8')
-  } else {
-    csv = await useStorage('assets/data').getItem('products.csv') as string
-  }
-
-  const { data } = Papa.parse(csv, {
+  const { data } = Papa.parse(productsCsv, {
     header: true,
     skipEmptyLines: true,
     dynamicTyping: true,

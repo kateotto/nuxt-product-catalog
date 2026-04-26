@@ -1,3 +1,6 @@
+import { readFileSync } from 'node:fs'
+import { resolve } from 'node:path'
+
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
@@ -10,12 +13,7 @@ export default defineNuxtConfig({
     '@nuxtjs/google-fonts',
     '@nuxtjs/tailwindcss',
   ],
-  nitro: {
-    serverAssets: [
-      {
-        baseName: 'data',
-        dir: './server/assets/data',
-      },
-    ],
+  runtimeConfig: {
+    productsCsv: readFileSync(resolve('./server/assets/data/products.csv'), 'utf-8'),
   },
 })
