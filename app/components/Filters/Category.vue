@@ -13,3 +13,14 @@
     </select>
   </div>
 </template>
+<style scoped>
+  .filter__category .filter__input {
+    width: 50%;
+  }
+
+  @media (min-width: 1024px) {
+    .filter__category .filter__input {
+      width: calc(25% - 1rem);
+    }
+  }
+</style>

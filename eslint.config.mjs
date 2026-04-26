@@ -12,10 +12,13 @@ export default withNuxt({
         'newlines-between': 'always',
       },
     ],
-    'vue/html-self-closing': ['error', {
-  html: {
-    void: 'any',
-  },
-}],
+    'vue/html-self-closing': [
+      'error',
+      {
+        html: {
+          void: 'any',
+        },
+      },
+    ],
   },
 })
