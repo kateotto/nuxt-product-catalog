@@ -19,10 +19,11 @@
 </template>
 <style scoped>
   .card {
+    background-color: #fff;
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
-    border: 1px solid #888;
+
     padding: 1.25rem;
     border-radius: 0.75rem;
   }
