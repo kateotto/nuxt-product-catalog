@@ -10,4 +10,12 @@ export default defineNuxtConfig({
     '@nuxtjs/google-fonts',
     '@nuxtjs/tailwindcss',
   ],
+  nitro: {
+    serverAssets: [
+      {
+        baseName: 'data',
+        dir: './server/assets',
+      },
+    ],
+  },
 })
