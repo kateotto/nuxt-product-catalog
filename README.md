@@ -1,75 +1,39 @@
-# Nuxt Minimal Starter
+# Nuxt Product Catalog
 
-Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+A Nuxt 4 product-catalog SPA with client-side filtering over a CSV-backed dataset.
+
+Live version: https://nuxt-product-catalog-lyart.vercel.app/
+
+## Requirements
+
+- Node.js `>= 20.12.0` (tested on Node 20.12+)
 
 ## Setup
 
-Make sure to install dependencies:
+Run all commands from the project root (`nuxt-product-catalog/`):
 
 ```bash
-# npm
+cd nuxt-product-catalog
 npm install
-
-# pnpm
-pnpm install
-
-# yarn
-yarn install
-
-# bun
-bun install
-```
-
-## Development Server
-
-Start the development server on `http://localhost:3000`:
-
-```bash
-# npm
 npm run dev
-
-# pnpm
-pnpm dev
-
-# yarn
-yarn dev
-
-# bun
-bun run dev
 ```
 
-## Production
+Dev server runs at http://localhost:3000.
 
-Build the application for production:
+## Commands
 
-```bash
-# npm
-npm run build
+- `npm run dev` — start the dev server
+- `npm run build` — production build
+- `npm run preview` — preview the build locally
+- `npm run lint:fix` — lint and autofix
+- `npm run format` — Prettier
 
-# pnpm
-pnpm build
+## How it works
 
-# yarn
-yarn build
+- Products live in [server/assets/data/products.csv](server/assets/data/products.csv) and are served by [server/api/products.get.ts](server/api/products.get.ts).
+- [app/composables/useProducts.ts](app/composables/useProducts.ts) holds all shared filter state (search, category, manufacturer, price range) and exposes `filteredProducts`. Every filter component calls it directly.
+- Editing the CSV requires restarting the dev server.
 
-# bun
-bun run build
-```
+## Credits
 
-Locally preview production build:
-
-```bash
-# npm
-npm run preview
-
-# pnpm
-pnpm preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+Code in this repository was generated with the assistance of [Claude](https://claude.com/claude-code).
